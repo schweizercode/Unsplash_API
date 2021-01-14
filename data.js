@@ -60,7 +60,6 @@ for (var i = 0; i < facts.length; i++) {
 }
 }
 
-
 const setEventlistenser = (data) => {
 let select = document.querySelector
 }
