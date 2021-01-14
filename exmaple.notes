@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <th>date</th>
+        <th>fact</th>
+    </thead>
+    <tbody id="list">
+        <!-- <tr>
+                <td>mo 5</td>
+                <td>Cats are great</td>
+            </tr> -->
+
+    </tbody>
+</table>
+
+</body>
+
+</html>
+*/

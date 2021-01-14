@@ -1,0 +1,31 @@
+table,
+th,
+td {
+    table-layout: fixed;
+    border: 1px solid white;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    background-color: rgba(230, 207, 146, 0.829);
+
+}
+
+tr:nth-child(even) {
+    background-color: #362424;
+
+}
+
+.boldname {
+    font-weight: 800;
+}
+
+
+.form-check-label {
+    color: white;
+    font-weight: inherit;
+    justify-content: space-around;
+    font-size: 15px;
+
+}
