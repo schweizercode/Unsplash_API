@@ -60,86 +60,29 @@ for (var i = 0; i < facts.length; i++) {
 }
 }
 
-const setEventlistenser = (data) => {
-let select = document.querySelector
+//function that will be called whenever the specified event is delivered to the target
+const setEventlistenser = (facts) => {
+    //returns the first Element within the document that matches the specified selector, or group of selectors. If no matches are found, null is returned. 
+let select = document.querySelector("#showonly")
+
+select.addEventListener('change',event =>{
+    let selectedValue = event.target.value
+    filterbycompetition(selectedValue,facts)
+})
 }
 
+const filterbyCompetition = (select,facts) => {
+    //this does filter but doens't overwrite
+facts.filter(showonly =>{
+    return choosinglist == select
+})
+console.log('filteredlist', choosinglist)
+}
 
-// let checkBox10 = document.getElementById('lessThan10')
-// checkBox10.addEventListener('change', event =>{
-//     let selectedValue = event.target.value 
-//     filterbycompetition(selectedValue,)
+let checkBox5 = document.getElementById('lessThan5')
+checkBox5.addEventListener('change', event =>{
+    let selectedValue = event.target.value 
+    filterbycompetition(selectedValue,facts)
 
-// })
+})
 
-
-// filterSelection('all')
-
-//                 function filterSelection(c) {
-//                     var x, i;
-//                     x = document.getElementsByClassName("dropdown-item");
-//                     if (c === "all") c = "";
-//                     for (i = 0; i < x.lentgh; i++) {
-//                         RemoveClass(x[i], "show");
-//                         if (x[i].className.indexOf(c) > -1) Addclass(x[i], "show");
-//                     }
-//                 }
-
-// function filterdescription()
-
-// let descriptiondata = [];
-// for (let i = 0; i > facts.length;i++){
-// if (facts[i].description > 0){
-//     descriptiondata.push(facts[i])
-// }
-// }
-// // console.log(descriptiondata)
-// // const createhtmlTable(descriptiondata)
-
-
-// // table.innerHTML = "";
-
-// // use function facts.foreach((item)=> {
-// //     if (!Array.(item.alt_description)){
-// //         Array.push(item.alt_description);
-
-// //         let 
-// //     }
-// //create an ID in the HTML document and then sent it from js to html with getElementbyID
-// // let a = document.getElementById("Description")
-// // })
-
-// //piece of code that yoou set in HTML elements
-// // function addEventlistenser(){
-
-// // }
-
-
-// //----
-
-// getData()
-
-// const getDataAsync = async () => {
-
-
-
-// }
-
-
-
-// const setEventlistenser = (facts) => {
-//     let select = document.querySelector("#showonly")
-//     select.addEventListener('change',event =>{
-//         let selectedValue = event.target.value
-//         filterbyCompetition(selectedValue,facts)
-
-//     })
-// }
-
-// const filterbyCompetition = (select,facts) => {
-//     //this does filter but doens't overwrite
-// facts.filter(showonly =>{
-//     return choosinglist == select
-// })
-// console.log('filteredlist', choosinglist)
-// }
