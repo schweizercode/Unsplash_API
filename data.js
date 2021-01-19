@@ -90,28 +90,14 @@ const checkboxFilter = (checked, facts)=> {
         createtable(facts)
     }
 }
+}
 
-// let checkbox20 = document.getElementById('lessThan20')
-// checkbox20.addEventListener('change', event =>{
-//     let checked20 = event.target.checked20
-//     checkboxFilter20 (checked20, facts)
-// })
+let checkbox20 = document.getElementById('lessThan20')
+checkbox20.addEventListener('change', event =>{
+    let checked20 = event.target.checked20
+    checkboxFilter (checked, facts)
+})
 
-// const checkboxFilter20 = (checked20, facts)=> {
-//     if (checked20 == true){
-//         let filteredFacts20 = facts.filter (fact => {
-//             return fact.likes >= 5 
-//         })
-//         console.log(filteredFacts)
-//         createtable(filteredFacts)
-//     } else {
-//         console.log(facts)
-//         createtable(facts)
-//     }
-// }
-
-
-// }
 
 //get today date
 // const today = new Date()
