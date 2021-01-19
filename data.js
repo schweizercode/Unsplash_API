@@ -35,12 +35,16 @@ for (var i = 0; i < facts.length; i++) {
     var factslikes = facts[i].likes
     var factsname = facts[i].user.first_name + " " + facts[i].user.last_name
     var factsdate = facts[i].created_at
+  
    
    
     cell2.innerHTML = factsdescription
     cell3.innerHTML = factslikes
     cell4.innerHTML = factsname
     cell5.innerHTML = factsdate
+      //reformat date
+    const date = new Date(factsdate)
+    date.toISOString()
    
 
     cell1.style.color ="grey"
@@ -64,32 +68,14 @@ for (var i = 0; i < facts.length; i++) {
 }
 }
 
-//function that will be called whenever the specified event is delivered to the target
 const setEventListener = (facts) => {
-    //returns the first Element within the document that matches the specified selector, or group of selectors. If no matches are found, null is returned. 
-// let select = document.querySelector("#")
-
-// select.addEventListener('change',event =>{
-//     let selectedValue = event.target.value
-//     filterbyCompetition(selectedValue,facts)
-// })
-// 
-
-// const filterbyCompetition = (select,facts) => {
-//     //this does filter but doens't overwrite
-// facts.filter(showonly =>{
-//     return choosinglist == select
-// })
-// console.log('filteredlist', choosinglist)
-// }
-
 
 let checkBox5 = document.getElementById('lessThan5')
 checkBox5.addEventListener('change', event =>{
     let checked = event.target.checked
     checkboxFilter(checked, facts)
 })
-}
+
 
 const checkboxFilter = (checked, facts)=> {
     if (checked === true) {
@@ -104,4 +90,30 @@ const checkboxFilter = (checked, facts)=> {
         createtable(facts)
     }
 }
+
+// let checkbox20 = document.getElementById('lessThan20')
+// checkbox20.addEventListener('change', event =>{
+//     let checked20 = event.target.checked20
+//     checkboxFilter20 (checked20, facts)
+// })
+
+// const checkboxFilter20 = (checked20, facts)=> {
+//     if (checked20 == true){
+//         let filteredFacts20 = facts.filter (fact => {
+//             return fact.likes >= 5 
+//         })
+//         console.log(filteredFacts)
+//         createtable(filteredFacts)
+//     } else {
+//         console.log(facts)
+//         createtable(facts)
+//     }
+// }
+
+
+// }
+
+//get today date
+// const today = new Date()
+// console.log('today',today.getDay())
 
