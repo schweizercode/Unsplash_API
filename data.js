@@ -6,6 +6,8 @@ const getDataAsync = async () => {
     const data = await response.json()
 createtable (data)
 
+setEventListener(data) 
+
     console.log('data',data)
 }
 getDataAsync()
@@ -15,6 +17,8 @@ const createtable = (facts) => {
 
 
 var tbody = document.getElementById("list")
+
+tbody.innerHTML = ""
     
 for (var i = 0; i < facts.length; i++) {
     var row = document.createElement("tr")
@@ -61,28 +65,43 @@ for (var i = 0; i < facts.length; i++) {
 }
 
 //function that will be called whenever the specified event is delivered to the target
-const setEventlistenser = (facts) => {
+const setEventListener = (facts) => {
     //returns the first Element within the document that matches the specified selector, or group of selectors. If no matches are found, null is returned. 
-let select = document.querySelector("#showonly")
+// let select = document.querySelector("#")
 
-select.addEventListener('change',event =>{
-    let selectedValue = event.target.value
-    filterbycompetition(selectedValue,facts)
-})
-}
+// select.addEventListener('change',event =>{
+//     let selectedValue = event.target.value
+//     filterbyCompetition(selectedValue,facts)
+// })
+// 
 
-const filterbyCompetition = (select,facts) => {
-    //this does filter but doens't overwrite
-facts.filter(showonly =>{
-    return choosinglist == select
-})
-console.log('filteredlist', choosinglist)
-}
+// const filterbyCompetition = (select,facts) => {
+//     //this does filter but doens't overwrite
+// facts.filter(showonly =>{
+//     return choosinglist == select
+// })
+// console.log('filteredlist', choosinglist)
+// }
+
 
 let checkBox5 = document.getElementById('lessThan5')
 checkBox5.addEventListener('change', event =>{
-    let selectedValue = event.target.value 
-    filterbycompetition(selectedValue,facts)
-
+    let checked = event.target.checked
+    checkboxFilter(checked, facts)
 })
+}
+
+const checkboxFilter = (checked, facts)=> {
+    if (checked === true) {
+        let filteredFacts = facts.filter (fact => {
+            return fact.likes <= 5
+    
+        } )
+        console.log(filteredFacts)
+        createtable(filteredFacts)
+    }  else {
+        console.log(facts)
+        createtable(facts)
+    }
+}
 
