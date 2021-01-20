@@ -109,7 +109,6 @@ const checkboxeslike = (facts) => {
             return fact.likes > 20
         })
         createtable(filteredFacts)
-        console.log(filteredFacts)
     }
 }
 
