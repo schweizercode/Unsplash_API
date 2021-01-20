@@ -38,10 +38,17 @@ const createtable = (facts) => {
         cell2.innerHTML = factsdescription
         cell3.innerHTML = factslikes
         cell4.innerHTML = factsname
-        cell5.innerHTML = factsdate
+        // cell5.innerHTML = factsdate
         //reformat date
         const date = new Date(factsdate)
         date.toISOString()
+        cell5.innerHTML = date.toLocaleDateString('de', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        })
+        row.appendChild(cell5);
+
 
 
         cell1.style.color = "grey"
@@ -115,43 +122,6 @@ const checkboxeslike = (facts) => {
     }
 }
 
-
-
-// const checkboxFilter = (checked, facts)=> {
-//     if (checked === true) {
-//         let filteredFacts = facts.filter (fact => {
-//             return fact.likes <= 5
-
-//         } )
-//         console.log(filteredFacts)
-//         createtable(filteredFacts)
-//     }  else {
-//         createtable(facts)
-//     }
-
-
-//     let checkbox20 = document.getElementById('lessThan20')
-// checkbox20.addEventListener('change', event =>{
-//     let checked20 = event.target.checked20
-//     checkboxFilter (checked, facts)
-// })
-// const checkboxFilter = (checked, facts)=> {
-//     if (checked === true) {
-//         let filteredFacts = facts.filter (fact => {
-//             return fact.likes <= 20 &&
-//            facts.likes > 5
-
-//         } )
-//         console.log(filteredFacts)
-//         createtable(filteredFacts)
-//     }  else {
-//         console.log(facts)
-//         createtable(facts)
-//     }
-
-// }
-// }
-// }
 
 
 //get today date
