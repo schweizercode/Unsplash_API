@@ -38,7 +38,6 @@ const createtable = (facts) => {
         cell2.innerHTML = factsdescription
         cell3.innerHTML = factslikes
         cell4.innerHTML = factsname
-        // cell5.innerHTML = factsdate
         //reformat date
         const date = new Date(factsdate)
         date.toISOString()
@@ -121,9 +120,3 @@ const checkboxeslike = (facts) => {
         createtable(facts)
     }
 }
-
-
-
-//get today date
-// const today = new Date()
-// console.log('today',today.getDay())

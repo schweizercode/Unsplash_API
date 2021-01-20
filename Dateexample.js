@@ -65,9 +65,6 @@ const createHtmlTable = (footballList) => {
 
 
 
-
-
-
 const createDropDown = (data) => {
     let arr = [];
 
@@ -86,8 +83,6 @@ const createDropDown = (data) => {
     });
 
 };
-
-
 
 
 
