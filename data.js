@@ -76,7 +76,6 @@ checkBox5.addEventListener('change', event =>{
     checkboxFilter(checked, facts)
 })
 
-
 const checkboxFilter = (checked, facts)=> {
     if (checked === true) {
         let filteredFacts = facts.filter (fact => {
@@ -89,14 +88,30 @@ const checkboxFilter = (checked, facts)=> {
         console.log(facts)
         createtable(facts)
     }
-}
-}
 
-let checkbox20 = document.getElementById('lessThan20')
+    let checkbox20 = document.getElementById('lessThan20')
 checkbox20.addEventListener('change', event =>{
     let checked20 = event.target.checked20
     checkboxFilter (checked, facts)
 })
+const checkboxFilter = (checked, facts)=> {
+    if (checked === true) {
+        let filteredFacts = facts.filter (fact => {
+            return fact.likes <= 20 
+    
+        } )
+        console.log(filteredFacts)
+        createtable(filteredFacts)
+    }  else {
+        console.log(facts)
+        createtable(facts)
+    }
+
+}
+}
+}
+
+
 
 
 //get today date
