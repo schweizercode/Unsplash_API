@@ -95,16 +95,21 @@ const checkboxeslike = (facts) => {
             return fact.likes <= 5
         })
         createtable(filteredFacts)
-    } else if (checkbox20.checked === true) {
+        console.log(filteredFacts)
+    } else if (checkbox20.checked === true && checkbox5.checked === false && checkboxabove.checked === false) {
         let filteredFacts = facts.filter(fact => {
-            return fact.likes <= 20
+            return fact.likes <= 20 &&
+                facts.like > 5
+
         })
         createtable(filteredFacts)
-    } else if (checkboxabove.checked === true) {
+        console.log(filteredFacts)
+    } else if (checkboxabove.checked === true && checkbox5.checked === false && checkbox20.checked === false) {
         let filteredFacts = facts.filter(fact => {
             return fact.likes > 20
         })
         createtable(filteredFacts)
+        console.log(filteredFacts)
     }
 }
 
