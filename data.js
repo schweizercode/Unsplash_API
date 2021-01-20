@@ -11,9 +11,7 @@ const getDataAsync = async () => {
 }
 getDataAsync()
 
-
 const createtable = (facts) => {
-
 
     var tbody = document.getElementById("list")
 
@@ -69,49 +67,53 @@ const createtable = (facts) => {
 
 const setEventListener = (facts) => {
 
-    let checkBox5 = document.getElementById('lessThan5')
+    let checkBox5 = document.getElementById('lessThan2')
     checkBox5.addEventListener('change', event => {
         checkboxeslike(facts)
     })
 
-    let checkbox20 = document.getElementById('lessThan20')
+    let checkbox20 = document.getElementById('lessThan5')
     checkbox20.addEventListener('change', event => {
         checkboxeslike(facts)
     })
 
-    let checkboxabove = document.getElementById('moreThan20')
+    let checkboxabove = document.getElementById('moreThan5')
     checkboxabove.addEventListener('change', event => {
         checkboxeslike(facts)
     })
 }
 
 const checkboxeslike = (facts) => {
-    let checkbox5 = document.getElementById('lessThan5')
-    let checkbox20 = document.getElementById('lessThan20')
-    let checkboxabove = document.getElementById('moreThan20')
+    let checkbox5 = document.getElementById('lessThan2')
+    let checkbox20 = document.getElementById('lessThan5')
+    let checkboxabove = document.getElementById('moreThan5')
 
     if (checkbox5.checked === true && checkbox20.checked === false && checkboxabove.checked === false) {
         let filteredFacts = facts.filter(fact => {
-            return fact.likes <= 5
+            return fact.likes <= 2
         })
         createtable(filteredFacts)
         console.log(filteredFacts)
+
     } else if (checkbox20.checked === true && checkbox5.checked === false && checkboxabove.checked === false) {
         let filteredFacts = facts.filter(fact => {
-            return fact.likes <= 20 &&
-                facts.like > 5
-
+            return fact.likes <= 5 &&
+                fact.likes > 2
         })
         createtable(filteredFacts)
         console.log(filteredFacts)
+
     } else if (checkboxabove.checked === true && checkbox5.checked === false && checkbox20.checked === false) {
         let filteredFacts = facts.filter(fact => {
-            return fact.likes > 20
+            return fact.likes > 5
         })
         createtable(filteredFacts)
+
+
+    } else if (checkboxabove.checked === false && checkbox5.checked === false && checkbox20.checked === false) {
+        createtable(facts)
     }
 }
-
 
 
 
