@@ -120,3 +120,24 @@ const checkboxeslike = (facts) => {
         createtable(facts)
     }
 }
+
+let datepicker = document.querySelector("#date")
+datepicker.addEventListener('change', event => {
+    let dateValue = event.target.value
+    console.log('dateValue', dateValue)
+    filterByDate(dateValue, data)
+    createHtmlTable(dateValue)
+})
+
+const filterByDate = (dateValue, facts) => {
+    const result = []
+    const datePickerFormatted = new Date(dateValue)
+}
+
+// //arrow fonction filter
+// const filteredList = facts.filter(facts => {
+//     const factsdateFormatted = new Date(game.date)
+//     return datePickerFormatted.setHours(0, 0, 0, 0) === gamedateFormatted.setHours(0, 0, 0, 0)
+// })
+// createHtmlTable(filteredList)
+// }
