@@ -7,6 +7,7 @@ const getDataAsync = async () => {
 
     setEventListener(data)
 
+
     console.log('data', data)
 }
 getDataAsync()
@@ -87,6 +88,13 @@ const setEventListener = (facts) => {
     checkboxabove.addEventListener('change', event => {
         checkboxeslike(facts)
     })
+
+    let datepicker = document.querySelector("#date")
+    datepicker.addEventListener('change', event => {
+        let dateValue = event.target.value
+        filterByDate(dateValue, facts)
+        console.log(dateValue)
+    })
 }
 
 const checkboxeslike = (facts) => {
@@ -121,23 +129,19 @@ const checkboxeslike = (facts) => {
     }
 }
 
-let datepicker = document.querySelector("#date")
-datepicker.addEventListener('change', event => {
-    let dateValue = event.target.value
-    console.log('dateValue', dateValue)
-    filterByDate(dateValue, data)
-    createHtmlTable(dateValue)
-})
-
 const filterByDate = (dateValue, facts) => {
-    const result = []
-    const datePickerFormatted = new Date(dateValue)
+    console.log(dateValue)
+    console.log(facts)
+
 }
 
-// //arrow fonction filter
-// const filteredList = facts.filter(facts => {
-//     const factsdateFormatted = new Date(game.date)
-//     return datePickerFormatted.setHours(0, 0, 0, 0) === gamedateFormatted.setHours(0, 0, 0, 0)
-// })
-// createHtmlTable(filteredList)
-// }
+const filteredFacts = []
+
+for (let i = 0; i < facts.length; i++) {
+    if (dateValue === facts[i].created_at) {
+        filteredFacts.push(facts[i])
+    }
+}
+
+console.log(filteredFacts)
+createtable(dateValue)
