@@ -126,6 +126,7 @@ const checkboxeslike = (facts) => {
 
     } else if (checkboxabove.checked === false && checkbox5.checked === false && checkbox20.checked === false) {
         createtable(facts)
+        console.log(facts)
     }
 }
 
