@@ -140,7 +140,7 @@ const filteredFacts = []
 
 for (let i = 0; i < facts.length; i++) {
     if (dateValue === facts[i].created_at) {
-        filteredFacts.push(facts[i])
+        filteredFacts.push(facts[i].length)
     }
 }
 
