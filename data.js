@@ -49,8 +49,6 @@ const createtable = (facts) => {
         })
         row.appendChild(cell5);
 
-
-
         cell1.style.color = "grey"
         cell2.style.color = "black"
         cell3.className = "bold"
@@ -129,6 +127,7 @@ const checkboxeslike = (facts) => {
         console.log(facts)
     }
 }
+
 
 const filterByDate = (dateValue, facts) => {
     console.log(dateValue)
