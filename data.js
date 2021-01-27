@@ -123,25 +123,29 @@ const checkboxeslike = (facts) => {
 
 
     } else if (checkboxabove.checked === false && checkbox5.checked === false && checkbox20.checked === false) {
-        createtable(facts)
+        createtable([])
         console.log(facts)
     }
 }
 
 
 const filterByDate = (dateValue, facts) => {
-    console.log(dateValue)
     console.log(facts)
 
-}
+    const date = new Date(dateValue)
 
-const filteredFacts = []
+    const filterArray = []
 
-for (let i = 0; i < facts.length; i++) {
-    if (dateValue === facts[i].created_at) {
-        filteredFacts.push(facts[i])
+    for (let i = 0; i < facts.length; i++) {
+
+        const factDate = new Date(facts[i].created_at)
+
+        if (date.setHours(0, 0, 0, 0) === factDate.setHours(0, 0, 0, 0)) {
+            filterArray.push(facts[i])
+        }
+
     }
-}
 
-console.log(filteredFacts)
-createtable(dateValue)
+    createtable(filterArray)
+
+}
