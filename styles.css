@@ -29,3 +29,16 @@ tr:nth-child(even) {
     font-size: 15px;
 
 }
+
+.picker {
+
+    color: white;
+}
+
+.navbar {
+    color: white;
+}
+
+.navbar-text {
+    margin-left: 15px;
+}
