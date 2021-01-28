@@ -101,11 +101,11 @@ const checkboxeslike = (facts) => {
     let checkboxabove = document.getElementById('moreThan5')
 
     if (checkbox5.checked === true && checkbox20.checked === true && checkboxabove.checked === true) {
-        createtable([filteredFacts])
+        createtable(filteredFacts)
 
     } else if (checkbox5.checked === false && checkbox20.checked === true && checkboxabove.checked === true) {
         let filteredFacts = facts.filter(fact => {
-            return fact.likes <= 2
+            return fact.likes >= 2
         })
         createtable(filteredFacts)
         console.log(filteredFacts)
