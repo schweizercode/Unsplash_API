@@ -114,11 +114,10 @@ const checkboxeslike = (facts) => {
     } else if (checkbox5.checked === true && checkbox20.checked === false && checkboxabove.checked === true) {
         let filteredFacts = facts.filter(fact => {
             return fact.likes <= 2 &&
-                fact.likes < 5
+                fact.likes > 5
         })
 
         createtable(filteredFacts)
-        console.log(filteredFacts)
 
 
     } else if (checkbox5.checked === true && checkbox20.checked === true && checkboxabove.checked === false) {
