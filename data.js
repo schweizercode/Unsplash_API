@@ -19,54 +19,60 @@ const createtable = (facts) => {
     tbody.innerHTML = ""
 
     for (var i = 0; i < facts.length; i++) {
-        var row = document.createElement("tr")
-        var cell1 = document.createElement("td")
-        var cell2 = document.createElement("td")
-        var cell3 = document.createElement("td")
-        var cell4 = document.createElement("td")
-        var cell5 = document.createElement("td")
 
-        // console.log(facts[i].urls.regular);
+        if (isDate(facts[i]) &&
+            (isInCheckbox5(facts[i]) || isInCheckbox20(facts[i]) || isInCheckboxMore(facts[i]))) {
 
-        var factspicture = facts[i].urls.regular
-        var factsdescription = facts[i].alt_description
-        var factslikes = facts[i].likes
-        var factsname = facts[i].user.first_name + " " + facts[i].user.last_name
-        var factsdate = facts[i].created_at
+            var row = document.createElement("tr")
+            var cell1 = document.createElement("td")
+            var cell2 = document.createElement("td")
+            var cell3 = document.createElement("td")
+            var cell4 = document.createElement("td")
+            var cell5 = document.createElement("td")
+
+            // console.log(facts[i].urls.regular);
+
+            var factspicture = facts[i].urls.regular
+            var factsdescription = facts[i].alt_description
+            var factslikes = facts[i].likes
+            var factsname = facts[i].user.first_name + " " + facts[i].user.last_name
+            var factsdate = facts[i].created_at
 
 
 
-        cell2.innerHTML = factsdescription
-        cell3.innerHTML = factslikes
-        cell4.innerHTML = factsname
-        //reformat date
-        const date = new Date(factsdate)
-        date.toISOString()
-        cell5.innerHTML = date.toLocaleDateString('de', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric'
-        })
-        row.appendChild(cell5);
+            cell2.innerHTML = factsdescription
+            cell3.innerHTML = factslikes
+            cell4.innerHTML = factsname
+            //reformat date
+            const date = new Date(factsdate)
+            date.toISOString()
+            cell5.innerHTML = date.toLocaleDateString('de', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            })
+            row.appendChild(cell5);
 
-        cell1.style.color = "grey"
-        cell2.style.color = "black"
-        cell3.className = "bold"
-        cell4.className = "boldname"
-        cell5.className = "bold"
+            cell1.style.color = "grey"
+            cell2.style.color = "black"
+            cell3.className = "bold"
+            cell4.className = "boldname"
+            cell5.className = "bold"
 
-        var images = document.createElement("img")
-        images.src = factspicture
+            var images = document.createElement("img")
+            images.src = factspicture
 
-        cell1.appendChild(images).width = "150";
+            cell1.appendChild(images).width = "150";
 
-        row.appendChild(cell1)
-        row.appendChild(cell2)
-        row.appendChild(cell3)
-        row.appendChild(cell4)
-        row.appendChild(cell5)
+            row.appendChild(cell1)
+            row.appendChild(cell2)
+            row.appendChild(cell3)
+            row.appendChild(cell4)
+            row.appendChild(cell5)
 
-        tbody.appendChild(row)
+            tbody.appendChild(row)
+        }
+
     }
 }
 
@@ -74,142 +80,253 @@ const setEventListener = (facts) => {
 
     let checkBox5 = document.getElementById('lessThan2')
     checkBox5.addEventListener('change', event => {
-        checkboxeslike(facts)
+        // checkboxeslike(facts)
+        createtable(facts)
     })
 
     let checkbox20 = document.getElementById('lessThan5')
     checkbox20.addEventListener('change', event => {
-        checkboxeslike(facts)
+        // checkboxeslike(facts)
+        createtable(facts)
+
     })
 
     let checkboxabove = document.getElementById('moreThan5')
     checkboxabove.addEventListener('change', event => {
-        checkboxeslike(facts)
+        // checkboxeslike(facts)
+        createtable(facts)
+
     })
 
     let datepicker = document.querySelector("#date")
     datepicker.addEventListener('change', event => {
         let dateValue = event.target.value
-        filterByDate(dateValue, facts)
+        // filterByDate(dateValue, facts)
+        createtable(facts)
+
     })
 }
 
-const checkboxeslike = (facts) => {
-    let checkbox5 = document.getElementById('lessThan2')
-    let checkbox20 = document.getElementById('lessThan5')
-    let checkboxabove = document.getElementById('moreThan5')
+// const checkboxeslike = (facts) => {
+//     let checkbox5 = document.getElementById('lessThan2')
+//     let checkbox20 = document.getElementById('lessThan5')
+//     let checkboxabove = document.getElementById('moreThan5')
+//     let datepicker = document.querySelector("#date").value
+//     const date = new Date(datepicker).setHours(0, 0, 0, 0)
 
-    if (checkbox5.checked === true && checkbox20.checked === true && checkboxabove.checked === true) {
-        createtable(facts)
+//     if (checkbox5.checked === true && checkbox20.checked === true && checkboxabove.checked === true) {
+//         createtable(facts)
 
-    } else if (checkbox5.checked === false && checkbox20.checked === true && checkboxabove.checked === true) {
-        let filteredFacts = facts.filter(fact => {
-            return fact.likes >= 2
-        })
+//     } else if (checkbox5.checked === false && checkbox20.checked === true && checkboxabove.checked === true) {
+//         let filteredFacts = facts.filter(fact => {
+//             const formatFactDate = new Date(fact.created_at).setHours(0, 0, 0, 0)
+//             return fact.likes >= 2 && formatFactDate == date
+//         })
 
-        createtable(filteredFacts)
-        console.log(filteredFacts)
+//         createtable(filteredFacts)
+//         console.log(filteredFacts)
 
-    } else if (checkbox5.checked === true && checkbox20.checked === false && checkboxabove.checked === true) {
-        let filteredFacts = facts.filter(fact => {
-            return fact.likes <= 2 ||
-                fact.likes > 5
-        })
+//     } else if (checkbox5.checked === true && checkbox20.checked === false && checkboxabove.checked === true) {
+//         let filteredFacts = facts.filter(fact => {
+//             const formatFactDate = new Date(fact.created_at).setHours(0, 0, 0, 0)
+//             return (fact.likes <= 2 || fact.likes > 5) && formatFactDate == date
+//         })
 
-        createtable(filteredFacts)
-        console.log(filteredFacts)
-
-
-    } else if (checkbox5.checked === true && checkbox20.checked === true && checkboxabove.checked === false) {
-        let filteredFacts = facts.filter(fact => {
-            return fact.likes <= 5
-        })
-
-        createtable(filteredFacts)
-        console.log(filteredFacts)
-
-    } else if (checkbox5.checked === true && checkbox20.checked === false && checkboxabove.checked === false) {
-        let filteredFacts = facts.filter(fact => {
-            return fact.likes <= 2
-        })
-
-        createtable(filteredFacts)
-
-    } else if (checkbox5.checked === false && checkbox20.checked === false && checkboxabove.checked === true) {
-        let filteredFacts = facts.filter(fact => {
-            return fact.likes > 5
-
-        })
-
-        createtable(filteredFacts)
-        console.log(filteredFacts)
-
-    } else if (checkbox5.checked === false && checkbox20.checked === true && checkboxabove.checked === false) {
-        let filteredFacts = facts.filter(fact => {
-            return fact.likes >= 2 &&
-                fact.likes <= 5
-        })
-
-        createtable(filteredFacts)
-        console.log(filteredFacts)
+//         createtable(filteredFacts)
+//         console.log(filteredFacts)
 
 
-    } else if (checkbox5.checked === false && checkbox20.checked === false && checkboxabove.checked === false) {
-        createtable([])
+//     } else if (checkbox5.checked === true && checkbox20.checked === true && checkboxabove.checked === false) {
+//         let filteredFacts = facts.filter(fact => {
+//             return fact.likes <= 5
+//         })
 
-    }
+//         createtable(filteredFacts)
+//         console.log(filteredFacts)
 
-}
+//     } else if (checkbox5.checked === true && checkbox20.checked === false && checkboxabove.checked === false) {
+//         let filteredFacts = facts.filter(fact => {
+//             return fact.likes <= 2
+//         })
+
+//         createtable(filteredFacts)
+
+//     } else if (checkbox5.checked === false && checkbox20.checked === false && checkboxabove.checked === true) {
+//         let filteredFacts = facts.filter(fact => {
+//             return fact.likes > 5
+
+//         })
+
+//         createtable(filteredFacts)
+//         console.log(filteredFacts)
+
+//     } else if (checkbox5.checked === false && checkbox20.checked === true && checkboxabove.checked === false) {
+//         let filteredFacts = facts.filter(fact => {
+//             return fact.likes >= 2 &&
+//                 fact.likes <= 5
+//         })
+
+//         createtable(filteredFacts)
+//         console.log(filteredFacts)
 
 
-const filterByDate = (dateValue, facts) => {
-    console.log(dateValue)
+//     } else if (checkbox5.checked === false && checkbox20.checked === false && checkboxabove.checked === false) {
+//         createtable([])
 
-    const date = new Date(dateValue)
+//     }
+// }
 
-    const filterArray = []
+// const checkboxeslike = (fact) => {
+//     let checkbox5 = document.getElementById('lessThan2')
+//     let checkbox20 = document.getElementById('lessThan5')
+//     let checkboxabove = document.getElementById('moreThan5')
 
-    for (let i = 0; i < facts.length; i++) {
+//     if (checkbox5.checked === true && checkbox20.checked === true && checkboxabove.checked === true) {
+//         return true
+//     }
+//     else if (checkbox5.checked === false && checkbox20.checked === true && checkboxabove.checked === true) {
+//         if (fact.likes >= 2) {
+//             return true
+//         }
+//         else return false
 
-        const factDate = new Date(facts[i].created_at)
+//     } else if (checkbox5.checked === true && checkbox20.checked === false && checkboxabove.checked === true) {
+//         let filteredFacts = facts.filter(fact => {
+//             return fact.likes <= 2 ||
+//                 fact.likes > 5
+//         })
 
-        if (date.setHours(0, 0, 0, 0) === factDate.setHours(0, 0, 0, 0)) {
-            filterArray.push(facts[i])
+//         createtable(filteredFacts)
+//         console.log(filteredFacts)
+
+
+//     } else if (checkbox5.checked === true && checkbox20.checked === true && checkboxabove.checked === false) {
+//         let filteredFacts = facts.filter(fact => {
+//             return fact.likes <= 5
+//         })
+
+//         createtable(filteredFacts)
+//         console.log(filteredFacts)
+
+//     } else if (checkbox5.checked === true && checkbox20.checked === false && checkboxabove.checked === false) {
+//         let filteredFacts = facts.filter(fact => {
+//             return fact.likes <= 2
+//         })
+
+//         createtable(filteredFacts)
+
+//     } else if (checkbox5.checked === false && checkbox20.checked === false && checkboxabove.checked === true) {
+//         let filteredFacts = facts.filter(fact => {
+//             return fact.likes > 5
+
+//         })
+
+//         createtable(filteredFacts)
+//         console.log(filteredFacts)
+
+//     } else if (checkbox5.checked === false && checkbox20.checked === true && checkboxabove.checked === false) {
+//         let filteredFacts = facts.filter(fact => {
+//             return fact.likes >= 2 &&
+//                 fact.likes <= 5
+//         })
+
+//         createtable(filteredFacts)
+//         console.log(filteredFacts)
+
+
+//     } else if (checkbox5.checked === false && checkbox20.checked === false && checkboxabove.checked === false) {
+//         createtable([])
+
+//     }
+
+// }
+
+
+// const filterByDate = (dateValue, facts) => {
+//     console.log(dateValue)
+
+//     const date = new Date(dateValue)
+
+//     const filterArray = []
+
+//     for (let i = 0; i < facts.length; i++) {
+
+//         const factDate = new Date(facts[i].created_at)
+
+//         if (date.setHours(0, 0, 0, 0) === factDate.setHours(0, 0, 0, 0)) {
+//             filterArray.push(facts[i])
+//         }
+
+//     }
+
+//     createtable(filterArray)
+
+// }
+
+
+
+
+
+
+const isDate = (fact) => {
+    let datepicker = document.querySelector("#date").value
+    console.log('datepicker', datepicker)
+    const date = new Date(datepicker).setHours(0, 0, 0, 0)
+
+    if (datepicker === "") {
+        return true
+    } else {
+        console.log('fact.created_at', fact.created_at)
+        const formatFactDate = new Date(fact.created_at).setHours(0, 0, 0, 0)
+        console.log('formatFactDate', formatFactDate)
+        if (date === formatFactDate) {
+
+            return true
+        } else {
+            return false
         }
-
     }
 
-    createtable(filterArray)
-
 }
 
-createtable = (facts) => {
-
-
+const isInCheckbox5 = (fact) => {
+    let checkbox5 = document.getElementById('lessThan2')
+    if (checkbox5.checked && fact.likes <= 2) {
+        return true
+    } else {
+        return false
+    }
+}
+const isInCheckbox20 = (fact) => {
+    let checkbox20 = document.getElementById('lessThan5')
+    if (checkbox20.checked && (fact.likes <= 2 && fact.likes >= 5)) {
+        return true
+    } else {
+        return false
+    }
+}
+const isInCheckboxMore = (fact) => {
+    let checkboxabove = document.getElementById('moreThan5')
+    if (checkboxabove.checked && fact.likes > 5) {
+        return true
+    } else {
+        return false
+    }
 }
 
 
-const isDate = (dateValue) => {
 
-        const datePickerFormatted = new Date(datepicker.value)
+// function filterResult(factDate, datePickerFormatted) {
+//     var result = [];
+//     if (datePickerFormatted == factDate) {
+//         if ((factDate) == (checkbox5.checked === true && checkbox20.checked === true && checkboxabove.checked === true)) {
+//             return (filterResult)
 
-        // if (datePickerFormatted.setHours(0, 0, 0, 0) === factDate.setHours(0, 0, 0, 0)) {
-        //     return true
-        // } else {
-        //     return false
-        // }
-
-
-        function filterResult(factDate, datePickerFormatted) {
-            var result = [];
-            if (datePickerFormatted == factDate) {
-                if ((factDate) == (checkbox5.checked === true && checkbox20.checked === true && checkboxabove.checked === true)) {
-                    return (filterResult)
-
-                } else if ((factDate) == (checkbox5.checked === false && checkbox20.checked === true && checkboxabove.checked === true)) {
-                    return (filterResult)
-                }
+//         } else if ((factDate) == (checkbox5.checked === false && checkbox20.checked === true && checkboxabove.checked === true)) {
+//             return (filterResult)
+//         }
 
 
 
-            }
+//     }
+// }
