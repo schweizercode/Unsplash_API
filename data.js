@@ -112,7 +112,7 @@ const checkboxeslike = (facts) => {
 
     } else if (checkbox5.checked === true && checkbox20.checked === false && checkboxabove.checked === true) {
         let filteredFacts = facts.filter(fact => {
-            return fact.likes <= 2 &&
+            return fact.likes <= 2 ||
                 fact.likes > 5
         })
 
@@ -191,25 +191,25 @@ createtable = (facts) => {
 
 const isDate = (dateValue) => {
 
-    const datePickerFormatted = new Date(datepicker.value)
+        const datePickerFormatted = new Date(datepicker.value)
 
-    // if (datePickerFormatted.setHours(0, 0, 0, 0) === factDate.setHours(0, 0, 0, 0)) {
-    //     return true
-    // } else {
-    //     return false
-    // }
-
-
-    // function filterResult(factDate, datePickerFormatted, checkboxeslike) {
-    //     var result = [];
-    //     for (datePickerFormatted == factDate) {
-    //         if ((factDate) == (checkbox5.checked === true && checkbox20.checked === true && checkboxabove.checked === true)) {
-    //             return (filterResult)
-
-    //         } else if ((factDate) == (checkbox5.checked === false && checkbox20.checked === true && checkboxabove.checked === true)) {
-    //             return (filterResult)
-    //         }
+        // if (datePickerFormatted.setHours(0, 0, 0, 0) === factDate.setHours(0, 0, 0, 0)) {
+        //     return true
+        // } else {
+        //     return false
+        // }
 
 
+        function filterResult(factDate, datePickerFormatted) {
+            var result = [];
+            if (datePickerFormatted == factDate) {
+                if ((factDate) == (checkbox5.checked === true && checkbox20.checked === true && checkboxabove.checked === true)) {
+                    return (filterResult)
 
-}
+                } else if ((factDate) == (checkbox5.checked === false && checkbox20.checked === true && checkboxabove.checked === true)) {
+                    return (filterResult)
+                }
+
+
+
+            }
