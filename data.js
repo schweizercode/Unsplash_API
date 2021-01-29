@@ -91,7 +91,6 @@ const setEventListener = (facts) => {
     datepicker.addEventListener('change', event => {
         let dateValue = event.target.value
         filterByDate(dateValue, facts)
-        console.log(dateValue)
     })
 }
 
@@ -164,7 +163,7 @@ const checkboxeslike = (facts) => {
 
 
 const filterByDate = (dateValue, facts) => {
-    console.log(facts)
+    console.log(dateValue)
 
     const date = new Date(dateValue)
 
@@ -189,24 +188,28 @@ createtable = (facts) => {
 
 }
 
-const isDate = (facts) => {
 
-
-
-    let datepicker = document.querySelector("#date")
+const isDate = (dateValue) => {
 
     const datePickerFormatted = new Date(datepicker.value)
 
-    const gamedateFormatted = new Date(game.date)
+    // if (datePickerFormatted.setHours(0, 0, 0, 0) === factDate.setHours(0, 0, 0, 0)) {
+    //     return true
+    // } else {
+    //     return false
+    // }
 
-    if (datePickerFormatted.setHours(0, 0, 0, 0) === gamedateFormatted.setHours(0, 0, 0, 0)) {
-        return true
-    } else {
-        return false
-    }
+
+    // function filterResult(factDate, datePickerFormatted, checkboxeslike) {
+    //     var result = [];
+    //     for (datePickerFormatted == factDate) {
+    //         if ((factDate) == (checkbox5.checked === true && checkbox20.checked === true && checkboxabove.checked === true)) {
+    //             return (filterResult)
+
+    //         } else if ((factDate) == (checkbox5.checked === false && checkbox20.checked === true && checkboxabove.checked === true)) {
+    //             return (filterResult)
+    //         }
+
+
 
 }
-console.log(isDate)
-
-
-controller()
