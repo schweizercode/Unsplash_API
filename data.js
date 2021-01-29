@@ -188,3 +188,25 @@ createtable = (facts) => {
 
 
 }
+
+const isDate = (facts) => {
+
+
+
+    let datepicker = document.querySelector("#date")
+
+    const datePickerFormatted = new Date(datepicker.value)
+
+    const gamedateFormatted = new Date(game.date)
+
+    if (datePickerFormatted.setHours(0, 0, 0, 0) === gamedateFormatted.setHours(0, 0, 0, 0)) {
+        return true
+    } else {
+        return false
+    }
+
+}
+console.log(isDate)
+
+
+controller()
