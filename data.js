@@ -281,7 +281,7 @@ const isDate = (fact) => {
         console.log('formatFactDate', formatFactDate)
         if (date === formatFactDate) {
 
-            return true
+            return false
         } else {
             return false
         }
@@ -312,6 +312,7 @@ const isInCheckboxMore = (fact) => {
     } else {
         return false
     }
+
 }
 
 
