@@ -281,7 +281,7 @@ const isDate = (fact) => {
         console.log('formatFactDate', formatFactDate)
         if (date === formatFactDate) {
 
-            return false
+            return true
         } else {
             return false
         }
